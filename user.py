@@ -24,3 +24,31 @@ class User:
         '''
 
         User.user_list.append(self)
+
+    #delete 
+    def delete_user(self):
+
+        '''
+        delete_user method saves user objects into user_list
+        '''
+
+        User.user_list.remove(self)
+    @classmethod
+    def display_users(cls):
+        '''
+        display_users returns infomation from the user list
+        
+        '''
+        return cls.user_list
+    @classmethod
+    def find_by_number(cls, number):
+        '''
+        method that takes in a username and return a user that matches that number
+        
+        '''
+        for User in cls.user_list:
+            if user-password == number:
+                return User
+    @classmethod
+    def user_exist(cls, number):
+        for user
