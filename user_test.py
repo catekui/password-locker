@@ -23,4 +23,11 @@ def test_init(self):
 
         self.assertEqual(self.new_user.password, '@Kate')
 #function for saving users
+def test_save_user(self):
+        ''' 
+        test_save_user to test if the user object is saved in the user list
+        '''
+        self.new_user.save_user() #saving the new user
+        self.assertEqual(len(user.user_list,1))
+
 
