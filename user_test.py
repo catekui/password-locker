@@ -1,5 +1,5 @@
 import unittest 
-from user import User # Importing the user class
+from user import user # Importing the user class
 
 class TestUser(unittest.TestCase):
 
@@ -13,7 +13,7 @@ def setUp(self):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User()("Cate","Wangui","Sweetcate","@Kate") # create  object
+        self.new_user = user()("Cate","Wangui","Sweetcate","@Kate") # create  object
 
 def test_init(self):
         '''
@@ -29,5 +29,17 @@ def test_save_user(self):
         '''
         self.new_user.save_user() #saving the new user
         self.assertEqual(len(user.user_list,1))
+#function to delete the user
+def test_delete_user(self):
+        '''
+        test_delete_user to delete the user from the user list
+        '''
+        self.new_user.save_user()
+        test_user = user("Cate","Wangui","Sweetcate","@Kate")
+        test_user.save_user()
+
+        self.new_user.delete_user() #delete the user object
+        self.assertEqual(len(user.user_list),1)
+
 
 
