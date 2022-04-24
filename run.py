@@ -4,6 +4,7 @@ import string
 from random import randint, random
 
 
+
 def create_user(first_name, last_name, username, password):
     newuser = User(first_name, last_name, username, password)
     return newuser
@@ -49,9 +50,10 @@ def display_accounts():
 
 
 def main():
+    global accountusername, accountpassword
     while True:
-        print("Welcome to Password Locker write CA or DA to start")
-        print("CA -or- DA")
+        print("Welcome to Password Locker write create account CA or login LG to start")
+        print("CA -or- LG")
         option = input()
         if option == "CA":
             print("create account")
@@ -64,15 +66,16 @@ def main():
             username = input()
             print('Set your password')
             userpassword = input()
-            #save_user(create_user(first_name, last_name, username, accountpassword))
+            save_user(create_user(first_name, last_name, username, password))
             print("Your user account has been successfully created. These are the details: ")
             print("_" * 10)
-            print(f"Name: {first_name} {last_name} \nUsername: {username} \nPassword: {userpassword}")
-            print("\nUse Login to your cacount with your details")
+            print(f"Name: {first_name} {last_name} \nUsername: {username} \nPassword: {password}")
+            print("\nUse Login to your account with your details")
             print("\n \n")
+            
 
-        elif option == "DA":
-            print("Your Username")
+        elif option == "LG":
+            print("Your Username is..")
             loginUsername = input()
             print("Your Password")
             loginPassword = input()
@@ -108,20 +111,20 @@ def main():
                     if find_account(accountusername):
                         print("Here is a list of your created accounts")
                         print("_" * 25)
-                        for user in delete_account():
+                        for user in display_accounts():
                             print(f"Account: {user.accountname} \nPassword: {user.accountpassword} \n\n")
 
                     else:
                         print("Invalid credentials")
                 else:
-                    print("TRY AGAIN")
+                    print("Try again")
             else:
-                print("Incorrent info please try again")
+                print("Incorrect info please try again")
                 print("\n")
         else:
-            print("PLEASE CHOOSE A VALID OPTION")
+            print("Please choose a valid option")
             print("\n")
 
 
-if __name__ == '_main_':
+if __name__ == '__main__':
     main()
