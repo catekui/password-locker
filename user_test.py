@@ -1,5 +1,5 @@
 import unittest 
-from user import user # Importing the user class
+from user import User # Importing the user class
 
 class TestUser(unittest.TestCase):
 
@@ -40,6 +40,8 @@ def test_delete_user(self):
 
         self.new_user.delete_user() #delete the user object
         self.assertEqual(len(user.user_list),1)
+
+        
 if __name__ == '__main__':
     unittest.main()
 
