@@ -48,11 +48,9 @@ class Credentials:
         
         '''
         for user in cls.accounts:
-            if user.username== username:
+            if user.username == username:
                 return user
-    def generate_password(size=8, char= string.ascii_uppercase+string.ascii_lowercase+string.digits):
-        return "".join(random.choice(char) 
-        for _ in range (size))
-        
-    
 
+    def generate_password(size=8, char=string.ascii_uppercase + string.ascii_lowercase + string.digits):
+        return "".join(random.choice(char)
+                       for _ in range(size))

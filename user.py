@@ -1,5 +1,6 @@
-import random
-import string
+# import random
+# import string
+
 
 class User:
     """
@@ -50,7 +51,7 @@ class User:
         
         '''
         for user in cls.user_list:
-            if user.username== username:
+            if user.username == username:
                 return user
 
     @classmethod
@@ -60,6 +61,5 @@ class User:
             if user.username == username:
                 active_user = user.username
         return active_user
-                # return True
-                # return False
-
+        # return True
+        # return False

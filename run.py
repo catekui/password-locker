@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 from user import User
-import string
-from random import randint, random
-from credentials import Credentials
 
+from credentials import Credentials
 
 
 def create_user(first_name, last_name, username, userpassword):
@@ -18,17 +16,17 @@ def save_user(user):
 def delete_user(user):
     user.delete_user()
 
-
-def find_user(number):
-    return User.find_by_number(number)
+#
+# def find_user(number):
+#     return User.find_by_number(number)
 
 
 def display_users():
     return User.display_users()
 
+
 def user_exist(username):
     return User.user_exist(username)
-    
 
 
 def create_account(accountusername, accountname, accountpassword):
@@ -44,12 +42,13 @@ def delete_account(user):
     user.delete_account()
 
 
-def find_account(username):
-    return Credentials.find_by_(username)
+# def find_account(username):
+#     return Credentials.find_by_(username)
 
 
 def display_accounts():
     return Credentials.display_accounts()
+
 
 def generate_password():
     return Credentials.generate_password()
@@ -74,13 +73,13 @@ def main():
             username = input()
             print('Set your password')
             userpassword = input()
-            save_user(create_user(first_name,last_name,username,userpassword)) 
+            save_user(create_user(first_name, last_name, username, userpassword))
             print("Your user account has been successfully created. These are the details: ")
             print("_" * 10)
             print(f"Name: {first_name} {last_name} \nUsername: {username} \nPassword: {userpassword}")
             print("\nUse Login to your account with your details")
             print("\n \n")
-            
+
 
         elif option == "LG":
             print("Your Username is..")
@@ -92,9 +91,9 @@ def main():
             if confirm_user == username:
 
                 print("\n")
-                print("you can create multiple accounts (MA) and also view them (VA) ")
+                print("you can create multiple accounts (MA) and also display accounts(DA)")
                 print("_" * 60)
-                print("MA -or- VA")
+                print("MA -or- DA")
 
                 choose = input()
                 if choose == "MA":
@@ -111,29 +110,32 @@ def main():
                         # accountpassword = "".join(choice(characters) for x in range(randint(6, 16)))
                         password = generate_password()
                         print(f"password: {password}")
-                        break
+
                     elif decision == "C":
 
                         print("Enter your password")
                         accountpassword = input()
-                        
+
                     else:
                         print("Please put in a valid choice")
-                    save_account(create_account(accountusername, accountname, accountpassword))
-                    print("\n")
-                    print(f"Username: {accountusername} \nAccount Name: {accountname} \nPassword: {accountpassword}")
-                elif choose == "VA":
-                    if display_accounts():
+                        save_account(create_account(accountusername, accountname, accountpassword))
+                        print("\n")
+                        print(f"Username: {accountusername} \nAccount Name: {accountname} \nPassword: {accountpassword}")
+                elif choose == "DA":
 
-                        print("Here is a list of your created accounts")
-                        print("_" * 25)
+                    if display_accounts():
+                        print("Here is the credential accounts")
+                        print('\n')
+
                         for user in display_accounts():
                             print(f"Account: {user.accountname} \nPassword: {user.accountpassword} \n\n")
+                            print('\n')
 
                     else:
-                        print("Invalid credentials")
+                        print("No credentials or accounts saved")
+                
                 else:
-                    print("Try again")
+                    print("Please select either multiple accounts or display accounts")
             else:
                 print("Incorrect info please try again")
                 print("\n")
