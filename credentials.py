@@ -34,14 +34,15 @@ class Credentials:
         method that returns the list of the accounts
         '''
         # for account in cls.accounts:
+        #     return cls.accounts
         return cls.accounts
 
     @classmethod
-    def find_by_number(cls, number):
+    def find_by_username(cls, username):
         '''
-        This method takes in a number and returns a contact that matches that number
+        method that takes in a username and return a user that matches that username
+        
         '''
-
-        for account in cls.accounts:
-            if account.accountusername == number:
-                return account
+        for user in cls.accounts:
+            if user.username== username:
+                return user

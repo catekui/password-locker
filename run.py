@@ -1,17 +1,18 @@
 #!/usr/bin/python3
-from user import User, Credentials
+from user import User
 import string
 from random import randint, random
+from credentials import Credentials
 
 
 
-def create_user(first_name, last_name, username, password):
-    newuser = User(first_name, last_name, username, password)
+def create_user(first_name, last_name, username, userpassword):
+    newuser = User(first_name, last_name, username, userpassword)
     return newuser
 
 
 def save_user(user):
-    user.save.user()
+    user.save_user()
 
 
 def delete_user(user):
@@ -24,6 +25,10 @@ def find_user(number):
 
 def display_users():
     return User.display_users()
+
+def user_exist(username):
+    return User.user_exist(username)
+    
 
 
 def create_account(accountusername, accountname, accountpassword):
@@ -39,8 +44,8 @@ def delete_account(user):
     user.delete_account()
 
 
-def find_account(number):
-    return Credentials.find_by_number(number)
+def find_account(username):
+    return Credentials.find_by_(username)
 
 
 def display_accounts():
@@ -50,7 +55,7 @@ def display_accounts():
 
 
 def main():
-    global accountusername, accountpassword
+    # global accountusername, accountpassword
     while True:
         print("Welcome to Password Locker write create account CA or login LG to start")
         print("CA -or- LG")
@@ -66,10 +71,10 @@ def main():
             username = input()
             print('Set your password')
             userpassword = input()
-            save_user(create_user(first_name, last_name, username, password))
+            save_user(create_user(first_name,last_name,username,userpassword)) 
             print("Your user account has been successfully created. These are the details: ")
             print("_" * 10)
-            print(f"Name: {first_name} {last_name} \nUsername: {username} \nPassword: {password}")
+            print(f"Name: {first_name} {last_name} \nUsername: {username} \nPassword: {userpassword}")
             print("\nUse Login to your account with your details")
             print("\n \n")
             
@@ -79,11 +84,14 @@ def main():
             loginUsername = input()
             print("Your Password")
             loginPassword = input()
+            confirm_user = user_exist(username)
 
-            if find_user(loginPassword):
+            if confirm_user == username:
+
                 print("\n")
                 print("you can create multiple accounts (MA) and also view them (VA) ")
                 print("_" * 60)
+                print("MA -or- VA")
 
                 choose = input()
                 if choose == "MA":
@@ -97,18 +105,21 @@ def main():
                     decision = input()
                     if decision == "G":
                         characters = string.ascii_letters + string.digits
-                        accountpassword = "".join(random.choice(characters) for x in range(randint(6, 16)))
+                        accountpassword = "".join(choice(characters) for x in range(randint(6, 16)))
                         print(f"password: {accountpassword}")
+                        break
                     elif decision == "C":
                         print("Enter your password")
                         accountpassword = input()
+                        
                     else:
                         print("Please put in a valid choice")
                     save_account(create_account(accountusername, accountname, accountpassword))
                     print("\n")
                     print(f"Username: {accountusername} \nAccount Name: {accountname} \nPassword: {accountpassword}")
                 elif choose == "VA":
-                    if find_account(accountusername):
+                    if display_accounts():
+
                         print("Here is a list of your created accounts")
                         print("_" * 25)
                         for user in display_accounts():
