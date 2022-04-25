@@ -51,6 +51,9 @@ def find_account(username):
 def display_accounts():
     return Credentials.display_accounts()
 
+def generate_password():
+    return Credentials.generate_password()
+
     # main function
 
 
@@ -104,11 +107,13 @@ def main():
                     print("Generate automatic password(G) or Create new password (C)")
                     decision = input()
                     if decision == "G":
-                        characters = string.ascii_letters + string.digits
-                        accountpassword = "".join(choice(characters) for x in range(randint(6, 16)))
-                        print(f"password: {accountpassword}")
+                        # characters = string.ascii_letters + string.digits
+                        # accountpassword = "".join(choice(characters) for x in range(randint(6, 16)))
+                        password = generate_password()
+                        print(f"password: {password}")
                         break
                     elif decision == "C":
+
                         print("Enter your password")
                         accountpassword = input()
                         
